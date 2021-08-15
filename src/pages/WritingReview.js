@@ -57,8 +57,8 @@ function WritingReview({ category, name, desc }){
     return (
         <>
         <ListItem 
-            category={"속초"}
-            name={"소호259"} 
+            category={"속초에서 여행을 즐길 수 있도록 소호와 함께해요"}
+            name={"소호259 - 여행 크루 모집중"} 
             description={"여행을 더 새롭게! 가상여행 참여자 모집 중!"}
             border={"transparent"}
         />
@@ -77,6 +77,9 @@ function WritingReview({ category, name, desc }){
                         />
                     )
                 }) : null}
+        </div>
+        <div>
+            <h1>참가자 리스트</h1>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
             <Text weight={700} size={"18px"}>주의 사항을 읽어주세요.</Text>

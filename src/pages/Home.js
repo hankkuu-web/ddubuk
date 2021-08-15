@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 import background from "../assets/부산.jpg";
 
 const Container = styled.div`
-style={{ backgroundImage: url(${background}) height: 300px withd: 300px  }}
+    backgroundImage: url(${background}) height: 300px withd: 300px
 `;
 
 const Wrapper = styled.div`
