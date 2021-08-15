@@ -109,8 +109,8 @@ async function patchCompany(payload){
     // PATCH /api/companies
     //console.log(payload);
     try{
-        const response = await axios.patch(
-            'http://ec2-18-221-139-75.us-east-2.compute.amazonaws.com:9001/api/companies/', 
+        const response = await axios.post(
+            'http://ec2-18-221-139-75.us-east-2.compute.amazonaws.com:9001/api/admin/register/members/', 
             payload, 
             { withCredentials: false },
         );
@@ -129,23 +129,23 @@ function WritingContentPage(){
     const { register, handleSubmit, getValues } = useForm();
 
     const onSubmit = (data) => {
-        let questionsArray = [];
-        questionsArray.push(data.defaultQ);
+        // let questionsArray = [];
+        // questionsArray.push(data.defaultQ);
         
-        if(data.ques){
-            data.ques.map((q, index) => {
-                questionsArray.push(q.value);
-            })
-        };
+        // if(data.ques){
+        //     data.ques.map((q, index) => {
+        //         questionsArray.push(q.value);
+        //     })
+        // };
         
         const payload = {
-            "companyId": counter,
-            "name": "default",
-            "profilePhotoUrl": "https://picsum.photos/1000/1000",
-            "introduce": data.intro,
-            "description": data.desc,
-            "serviceDescription": data.serviceDesc,
-            "questions": questionsArray,
+            // "companyId": counter,
+            // "name": "default",
+            // "profilePhotoUrl": "https://picsum.photos/1000/1000",
+            "memberName": data.memberName,
+            "phoneNumber": data.phoneNumber,
+            "email": data.email,
+            // "questions": questionsArray,
         };
         patchCompany(payload);
     };
@@ -164,39 +164,61 @@ function WritingContentPage(){
         <Container>
             <Wrapper>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Text weight={700} size={"18px"}>25자 이내로 소개글 한 마디를 작성해주세요.</Text>
+                    <Text weight={700} size={"18px"}>사람들과 사용할 닉네임 혹은 이름을 작성해주세요</Text>
                     <InputContainer>
                         <input
                             type="text"
-                            placeholder={"소개글을 작성해주세요."}
-                            name={'intro'}
-                            {...register('intro',{
+                            placeholder={"이름을 작성해주세요."}
+                            name={'memberName'}
+                            {...register('memberName',{
                                 required: "Intro is required.",
                                 maxlength: 25,
                             })}
                         />
                     </InputContainer>
                     <BlankBox size={"14px"} />
-                    <Text weight={700} size={"18px"}>회사와 서비스를 소개해주세요.</Text>
-                    <TextArea 
+                    <Text weight={700} size={"18px"}>연락받을 정보를 넣어 주세요.</Text>
+                    <InputContainer>
+                        <input
+                            type="text"
+                            placeholder={"연락처를 작성해주세요."}
+                            name={'phoneNumber'}
+                            {...register('phoneNumber',{
+                                required: "phoneNumber is required.",
+                                maxlength: 25,
+                            })}
+                        />
+                    </InputContainer>
+                    <InputContainer>
+                        <input
+                            type="text"
+                            placeholder={"이메일을 작성해주세요."}
+                            name={'email'}
+                            {...register('email',{
+                                required: "email is required.",
+                                maxlength: 25,
+                            })}
+                        />
+                    </InputContainer>
+                    {/* <TextArea 
                         height={"124px"}
-                        type="textarea"
-                        placeholder={"회사를 소개해주세요."}
+                        type="text"
+                        placeholder={"이메일"}
                         name={'desc'}
                         {...register('desc')}
                     />
                     <TextArea 
                         height={"124px"}
-                        type="textarea"
-                        placeholder={"서비스를 소개해주세요."}
+                        type="text"
+                        placeholder={"연락처."}
                         name={'serviceDesc'}
                         {...register('serviceDesc')}
-                    />
-                    <ButtonContainer>
+                    /> */}
+                    {/* <ButtonContainer>
                         <button className="defaultBtn">첨부하기</button>
                         <span>상세 이미지 파일을 첨부해주세요.</span>
-                    </ButtonContainer>
-                    <Text weight={700} size={"18px"}>질문을 작성해주세요.</Text>
+                    </ButtonContainer> */}
+                    {/* <Text weight={700} size={"18px"}>질문을 작성해주세요.</Text>
                     <InputContainer>
                         <input
                             type="text"
@@ -220,13 +242,13 @@ function WritingContentPage(){
                                 </button>
                             </ButtonInputContainer>
                     );
-                    })}
-                    <ButtonContainer>
+                    })} */}
+                    {/* <ButtonContainer>
                         <button className="circleBtn" type="button" onClick={() => addInput()}>
                             <FontAwesomeIcon color="white" size="lg" icon={faPlus} />
                         </button>
                         <span>질문을 추가해주세요.</span>
-                    </ButtonContainer>
+                    </ButtonContainer> */}
                     <input type="submit" />
                 </form>
             </Wrapper>

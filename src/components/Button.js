@@ -15,7 +15,7 @@ const ColoredButton = styled.button`
     background-color: ${props => props.color};
     color: white;
     height: 30px;
-    width: 64px;
+    width: 80px;
     margin-right: 8px;
     display: flex;
     flex-direction: row;

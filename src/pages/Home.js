@@ -6,8 +6,10 @@ import routes from '../routes';
 import axios from 'axios';
 import useAsync from '../hooks/useAsync';
 import { useHistory } from 'react-router-dom';
+import background from "../assets/부산.jpg";
 
 const Container = styled.div`
+style={{ backgroundImage: url(${background}) height: 300px withd: 300px  }}
 `;
 
 const Wrapper = styled.div`
@@ -16,7 +18,7 @@ const Wrapper = styled.div`
 async function getCompanies(){
     // GET /api/companies
     const { data } = await axios.get(
-        'http://ec2-18-221-139-75.us-east-2.compute.amazonaws.com:9001/api/companies/', {
+        'http://ec2-18-221-139-75.us-east-2.compute.amazonaws.com:9001/api/goods/', {
             withCredentials: false,
         }
     );
@@ -38,19 +40,23 @@ function Home({ accent, bgColor }){
                 btnColor={accent}
                 btnLink={routes.writingContent}
             >
-                글쓰기
+                회원가입
             </Button>
             <Search />
             <Wrapper>
-                {companies.map(company => {
-                    // console.log(company);
+                {companies.map(goods => {
+                    // console.log(goods);
                     return (
                         <ListItem 
-                            key={company.companyId}
-                            category={"기본"}
-                            name={company.companyName}
-                            description={company.introduce}
-                            link={`/content/:${company.companyId}`}
+                            key={goods.orderId}
+                            goodsId={goods.goodsId}
+                            category={goods.nationalName}
+                            name={goods.goodsName}
+                            description={goods.cityName}
+                            orderPrice={goods.orderPrice}
+                            startDate={goods.startDate}
+                            endDate={goods.endDate}
+                            link={`/content/:${goods.orderId}`}
                             border={"#efeff0"}
                         />
                     )

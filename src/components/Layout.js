@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from '../assets/logo.svg';
+//import { ReactComponent as Logo } from '../assets/logo.svg';
+import Logo from '../assets/soho.png';
 
 const Header = styled.header`
     width: 100%;
@@ -55,11 +56,12 @@ export default function Layout({ homeLink, children }){
                 <Wrapper>
                     <Link to={homeLink}>
                         <div>
-                            <Logo width="101px" height="38px" />
+                            {/* <Logo width="101px" height="38px" /> */}
+                            <img src={Logo}/>
                         </div>
                     </Link>
                     <TextWrapper>
-                        <span>스타트업의 모든 서비스를 체험하고 정성스러운 리뷰를 남겨주세요!</span>
+                        <span>게더타운과 함께 떠나는 가상여행!</span>
                     </TextWrapper>
                 </Wrapper>
             </Header>

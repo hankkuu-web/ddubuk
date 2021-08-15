@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import Background from './assets/logo.svg';
 
 export const Theme = {
     accent: "#0084F4",
@@ -18,6 +19,8 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Noto Sans KR", sans-serif !important;
         font-size: 16px;
     }
+
+
 
     a {
         color: inherit;

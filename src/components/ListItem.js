@@ -50,16 +50,37 @@ const Description = styled.div`
 
 
 
-function ListItem({ category, date, name, description, link, border }){
+function ListItem({ goodsId, category, date, name, description, orderPrice, startDate, endDate, paymentType, link, border }){
     const { pathname } = useLocation();
-    // console.log('link: ', link );
+     console.log('link: ', link );
     return (
         <ItemContainer>
             <Link to={link}>
                 <Item borderColor={border}>
                     <span className="category">{ category }</span>
-                    <span className="name">{ name }</span>
                     <Description>{ description }</Description>
+                    <span className="name">{ name }</span>
+                    {startDate && endDate ? 
+                        <div>
+                        <span className="startDate">시작일: { startDate }</span>
+                        <br />
+                        <span className="endDate">종료일: { endDate }</span>
+                        </div>
+                        : null
+                    }
+                    
+                    {link === "/" ? 
+                        (
+                            <div>
+                                <span className="price">비용: { orderPrice }</span>
+                                <br />
+                                <span className="paymentType">지불방법: { paymentType }</span>
+                                <br />
+                            </div>
+                        )
+                     : <img src={"https://modo-phinf.pstatic.net/20161214_58/1481674332104Mmf3I_JPEG/mosa0zJaaY.jpeg?type=round256_256"} className="img" /> }
+                    
+                    
                 </Item>
             </Link>
         </ItemContainer>
